@@ -63,7 +63,7 @@
   */
 
   /*MAIN*/
-  .questions__content {
+  .main_content {
     display: flex;
     flex-direction: column;
     padding: 15px 30px;
@@ -84,7 +84,7 @@
     box-shadow: 5px 5px #363636;
     height: 150px;
   }
-  .questions_entries {
+  .questions_content {
     flex: 1 1 auto;
     overflow-y: scroll;
     display: grid;
@@ -95,12 +95,12 @@
 </style>
 
 <body>
-  <div class="questions__content">
+  <div class="main_content">
     <textarea placeholder="Inserte Pregunta" class="questions__textarea" name="pregunta_txt" value=""></textarea>
   </div>
 
-  <div class="questions_entries">
-    <div class=''>
+  <div class="questions_content">
+    <div class='questions__item'>
       <div class=''>
         <p class=''>Pregunta 1</p>
       </div>
