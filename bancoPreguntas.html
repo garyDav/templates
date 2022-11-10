@@ -153,6 +153,11 @@
     visibility: visible;
     transform: translate(0);
   }
+  #modal-btn-active:checked ~ .modal {
+    pointer-events: all;
+    visibility: visible;
+    transform: translate(0);
+  }
   .modal__add {
     background-color: var(--bg-primary);
     position: absolute;
@@ -433,7 +438,8 @@
     </div>
   </nav>
 
-  <button class="btn_add">+</button>
+  <input type="checkbox" id="modal-btn-active" />
+  <label for="modal-btn-active"><button class="btn_add" for="modal-btn-active">+</button></label>
   <section class="modal">
     <article class="modal__add">
       <h3 class="modal__add--title">Añadir a Restaurante</h3>
