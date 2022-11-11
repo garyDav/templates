@@ -113,10 +113,11 @@
   }
   .btn_add {
     font-family: sans-serif, Arial, Helvetica;
-    padding: 10px;
-    border: none;
-    outline: none;
-    user-select: none;
+    display: block;
+    /* padding: 10px; */
+    /* border: none; */
+    /* outline: none; */
+    /* user-select: none; */
     cursor: pointer;
     background: var(--icon-primary);
     color: var(--bg-primary);
@@ -124,12 +125,15 @@
     width: 3.2rem;
     height: 3.2rem;
     font-size: 2rem;
-    line-height: 0;
+    /* line-height: 2rem; */
     position: fixed;
     bottom: 1rem;
     right: 1rem;
     box-shadow: 3px 3px 9px 1px #a6a6a6;
     z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .btn_add:hover {
     background: var(--button-active-blue);
@@ -206,6 +210,9 @@
   #nav-active {
     display: none;
   }
+  #modal-btn-active {
+    display: none;
+  }
 
   /*NAVBAR*/
   .navbar {
@@ -257,6 +264,9 @@
     overflow: hidden;
     transition: var(--transition-speed);
   }
+  /*.navbar__title::selection ~ {
+
+  }*/
   #nav-active:checked ~ .navbar__title {
     width: 0%;
   }
@@ -439,7 +449,7 @@
   </nav>
 
   <input type="checkbox" id="modal-btn-active" />
-  <label for="modal-btn-active"><button class="btn_add" for="modal-btn-active">+</button></label>
+  <label class="btn_add" for="modal-btn-active">+</label>
   <section class="modal">
     <article class="modal__add">
       <h3 class="modal__add--title">Añadir a Restaurante</h3>
