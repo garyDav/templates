@@ -1,454 +1,480 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./public/assets/fontawesome/css/all.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-  <title>Banco de Preguntas</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./public/assets/fontawesome/css/all.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <title>Banco de Preguntas</title>
+  </head>
 
-<style>
-  @import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
-  /*_SETTINGS*/
-  :root {
-    font-size: 16px;
-    font-family: "Muli", Helvetica, Arial, sans-serif;
-    --primary: #5c62c5;
-    --dark-grey: #363636;
-    --light-grey: #d8d8d8;
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+    /*_SETTINGS*/
+    :root {
+      font-size: 16px;
+      font-family: "Muli", Helvetica, Arial, sans-serif;
+      --primary: #5c62c5;
+      --dark-grey: #363636;
+      --light-grey: #d8d8d8;
 
-    --bg-modal: #6a6a6aa3;
-    --bg-primary: #f3f3f3;
-    --bg-secondary: #b6b6b6;
-    --bg-tertiary: #e3e3e3;
+      --bg-modal: #6a6a6aa3;
+      --bg-primary: #f3f3f3;
+      --bg-secondary: #b6b6b6;
+      --bg-tertiary: #e3e3e3;
 
-    --text-primary: #141418;
-    --icon-primary: #317cd8;
+      --text-primary: #141418;
+      --icon-primary: #317cd8;
 
-    --white: #fff;
-    --google-blue: #4285f4;
-    --button-active-blue: #1669f2;
-    --transition-speed: 600ms;
-  }
+      --white: #fff;
+      --google-blue: #4285f4;
+      --button-active-blue: #1669f2;
+      --transition-speed: 600ms;
+    }
 
-  /*_BASE*/
-  * {
-    margin: 0px;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-user-select: auto;
-  }
+    /*_BASE*/
+    * {
+      margin: 0px;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-user-select: auto;
+    }
 
-  html,
-  body {
-    color: var(--text-primary);
-    background-color: var(--bg-primary);
-  }
-  body::-webkit-scrollbar {
-    width: 0.25rem;
-  }
-  body::-webkit-scrollbar-track {
-    background-color: var(--bg-tertiary);
-  }
-  body::-webkit-scrollbar-thumb {
-    background-color: var(--bg-secondary);
-  }
-  .mt-1 {
-    margin-top: 5px;
-  }
-  .mt-5 {
-    margin-top: 20px;
-  }
-  .mb-1 {
-    margin-bottom: 5px;
-  }
-  .mb-5 {
-    margin-bottom: 20px;
-  }
-  .pointer {
-    cursor: pointer;
-  }
-  .center {
-    margin: auto;
-    text-align: center;
-  }
+    html,
+    body {
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+    }
+    body::-webkit-scrollbar {
+      width: 0.25rem;
+    }
+    body::-webkit-scrollbar-track {
+      background-color: var(--bg-tertiary);
+    }
+    body::-webkit-scrollbar-thumb {
+      background-color: var(--bg-secondary);
+    }
+    .mt-1 {
+      margin-top: 5px;
+    }
+    .mt-5 {
+      margin-top: 20px;
+    }
+    .mb-1 {
+      margin-bottom: 5px;
+    }
+    .mb-5 {
+      margin-bottom: 20px;
+    }
+    .pointer {
+      cursor: pointer;
+    }
+    .center {
+      margin: auto;
+      text-align: center;
+    }
 
-  /*_GENERAL*/
-  .input {
-    width: 100%;
-    background-color: transparent;
-    border-left: 0px;
-    border-right: 0px;
-    border-top: 0px;
-    border-bottom: 2px solid var(--icon-primary);
-    font-family: "Muli", sans-serif;
-    font-size: 1rem;
-    padding: 0px 0px 5px 10px;
-    outline: none;
-  }
-  ::placeholder {
-    color: var(--text-primary);
-  }
-  button {
-    padding: 10px 15px;
-    border: none;
-    outline: none;
-    user-select: none;
-    cursor: pointer;
-    background: var(--bg-secondary);
-    color: var(--bg-primary);
-    border-radius: 10px;
-    font-size: 1rem;
-  }
-  button:hover {
-    background: var(--bg-modal);
-    color: var(--white);
-  }
-  .btn_add {
-    font-family: sans-serif, Arial, Helvetica;
-    display: block;
-    /* padding: 10px; */
-    /* border: none; */
-    /* outline: none; */
-    /* user-select: none; */
-    cursor: pointer;
-    background: var(--icon-primary);
-    color: var(--bg-primary);
-    border-radius: 50%;
-    width: 3.2rem;
-    height: 3.2rem;
-    font-size: 2rem;
-    /* line-height: 2rem; */
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    box-shadow: 3px 3px 9px 1px #a6a6a6;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .btn_add:hover {
-    background: var(--button-active-blue);
-  }
-  .modal {
-    visibility: hidden;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    list-style: none;
-    pointer-events: none;
-    z-index: 10;
-    background-color: var(--bg-modal);
-    transform: translateY(-100vh);
-    transition: var(--transition-speed);
-  }
-  .modal.open {
-    pointer-events: all;
-    visibility: visible;
-    transform: translate(0);
-  }
-  #modal-btn-active:checked ~ .modal {
-    pointer-events: all;
-    visibility: visible;
-    transform: translate(0);
-  }
-  .modal__add {
-    background-color: var(--bg-primary);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 0.5rem 1rem;
-  }
-  .modal__add--title {
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    margin-bottom: 2rem;
-  }
-  .modal__add--menu {
-    list-style: none;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #8e8e8e;
-  }
-  .modal__add--menu:last-child {
-    margin: 0;
-    border: none;
-  }
-  .modal__add--menu:last-child li {
-    margin-bottom: 0.5rem;
-  }
-  .modal__add--menu li {
-    margin-bottom: 1.5rem;
-  }
-  .modal__add--menu li a {
-    color: var(--text-primary);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-  }
-  .modal__add--menu li a i {
-    font-size: 1.5rem;
-    color: var(--icon-primary);
-    text-decoration: none;
-  }
-  .modal__add--menu li a span {
-    margin-left: 1rem;
-  }
-  #menu-active {
-    display: none;
-  }
-  #nav-active {
-    display: none;
-  }
-  #modal-btn-active {
-    display: none;
-  }
+    /*_GENERAL*/
+    .input {
+      width: 100%;
+      background-color: transparent;
+      border-left: 0px;
+      border-right: 0px;
+      border-top: 0px;
+      border-bottom: 2px solid var(--icon-primary);
+      font-family: "Muli", sans-serif;
+      font-size: 1rem;
+      padding: 0px 0px 5px 10px;
+      outline: none;
+    }
+    ::placeholder {
+      color: var(--text-primary);
+    }
+    button {
+      padding: 10px 15px;
+      border: none;
+      outline: none;
+      user-select: none;
+      cursor: pointer;
+      background: var(--bg-secondary);
+      color: var(--bg-primary);
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    button:hover {
+      background: var(--bg-modal);
+      color: var(--white);
+    }
+    .btn_add {
+      font-family: sans-serif, Arial, Helvetica;
+      display: block;
+      /* padding: 10px; */
+      /* border: none; */
+      /* outline: none; */
+      /* user-select: none; */
+      cursor: pointer;
+      background: var(--icon-primary);
+      color: var(--bg-primary);
+      border-radius: 50%;
+      width: 3.2rem;
+      height: 3.2rem;
+      font-size: 2rem;
+      /* line-height: 2rem; */
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      box-shadow: 3px 3px 9px 1px #a6a6a6;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn_add:hover {
+      background: var(--button-active-blue);
+    }
+    .modal {
+      visibility: hidden;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      list-style: none;
+      pointer-events: none;
+      z-index: 10;
+      background-color: var(--bg-modal);
+      transform: translateY(-100vh);
+      transition: var(--transition-speed);
+    }
+    .modal.open {
+      pointer-events: all;
+      visibility: visible;
+      transform: translate(0);
+    }
+    #modal-btn-active:checked ~ .modal {
+      pointer-events: all;
+      visibility: visible;
+      transform: translate(0);
+    }
+    .modal__add {
+      background-color: var(--bg-primary);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5rem 1rem;
+    }
+    .modal__add--title {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      margin-bottom: 2rem;
+    }
+    .modal__add--menu {
+      list-style: none;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #8e8e8e;
+    }
+    .modal__add--menu:last-child {
+      margin: 0;
+      border: none;
+    }
+    .modal__add--menu:last-child li {
+      margin-bottom: 0.5rem;
+    }
+    .modal__add--menu li {
+      margin-bottom: 1.5rem;
+    }
+    .modal__add--menu li a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .modal__add--menu li a i {
+      font-size: 1.5rem;
+      color: var(--icon-primary);
+      text-decoration: none;
+    }
+    .modal__add--menu li a span {
+      margin-left: 1rem;
+    }
+    #menu-active {
+      display: none;
+    }
+    #nav-active {
+      display: none;
+    }
+    #modal-btn-active {
+      display: none;
+    }
+    #add-new-img {
+      display: none;
+    }
 
-  /*NAVBAR*/
-  .navbar {
-    height: 3.5rem;
-    display: flex;
-    align-items: center;
-  }
-  .navbar__search {
-    cursor: pointer;
-    color: var(--icon-primary);
-    margin: 0 1rem;
-    display: flex;
-  }
-  .navbar__search .fa-hand-point-left {
-    visibility: hidden;
-    transform: rotate(-180deg);
-    width: 0;
-    transition: visibility 0ms, transform 300ms linear 0ms;
-  }
-  #nav-active:checked ~ .navbar__search .fa-hand-point-left {
-    width: auto;
-    visibility: visible;
-    transform: rotate(-360deg);
-  }
-  .navbar__search .fa-search {
-    width: auto;
-    visibility: visible;
-    transform: rotate(0deg);
-    transition: visibility 0ms, transform 300ms linear 0ms;
-  }
-  #nav-active:checked ~ .navbar__search .fa-search {
-    width: 0;
-    visibility: hidden;
-    transform: rotate(-180deg);
-  }
-  .navbar__input {
-    width: 0%;
-    overflow: hidden;
-    transition: var(--transition-speed);
-    pointer-events: none;
-  }
-  #nav-active:checked ~ .navbar__input {
-    pointer-events: all;
-    margin-right: 1rem;
-    width: 100%;
-  }
-  .navbar__title {
-    width: 100%;
-    overflow: hidden;
-    transition: var(--transition-speed);
-  }
-  /*.navbar__title::selection ~ {
+    /*NAVBAR*/
+    .navbar {
+      height: 3.5rem;
+      display: flex;
+      align-items: center;
+    }
+    .navbar__search {
+      cursor: pointer;
+      color: var(--icon-primary);
+      margin: 0 1rem;
+      display: flex;
+    }
+    .navbar__search .fa-hand-point-left {
+      visibility: hidden;
+      transform: rotate(-180deg);
+      width: 0;
+      transition: visibility 0ms, transform 300ms linear 0ms;
+    }
+    #nav-active:checked ~ .navbar__search .fa-hand-point-left {
+      width: auto;
+      visibility: visible;
+      transform: rotate(-360deg);
+    }
+    .navbar__search .fa-search {
+      width: auto;
+      visibility: visible;
+      transform: rotate(0deg);
+      transition: visibility 0ms, transform 300ms linear 0ms;
+    }
+    #nav-active:checked ~ .navbar__search .fa-search {
+      width: 0;
+      visibility: hidden;
+      transform: rotate(-180deg);
+    }
+    .navbar__input {
+      width: 0%;
+      overflow: hidden;
+      transition: var(--transition-speed);
+      pointer-events: none;
+    }
+    #nav-active:checked ~ .navbar__input {
+      pointer-events: all;
+      margin-right: 1rem;
+      width: 100%;
+    }
+    .navbar__title {
+      width: 100%;
+      overflow: hidden;
+      transition: var(--transition-speed);
+    }
+    /*.navbar__title::selection ~ {
 
   }*/
-  #nav-active:checked ~ .navbar__title {
-    width: 0%;
-  }
+    #nav-active:checked ~ .navbar__title {
+      width: 0%;
+    }
 
-  /*MAIN TEMPLATE*/
-  .questions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    grid-gap: 20px;
-  }
+    /*MAIN TEMPLATE*/
+    .questions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      grid-gap: 20px;
+    }
 
-  .questions__insert,
-  .questions__insert-textarea {
-    border: none;
-    background-color: transparent;
-  }
-  .questions__insert,
-  .questions__insert-textarea:focus {
-    outline: none;
-  }
-  .questions__insert {
-    color: var(--dark-grey);
-    font-weight: 700;
-    font-size: 1.2rem;
-  }
-  .questions__insert-textarea {
-    border-bottom: 1px solid var(--dark-grey);
-    color: var(--dark-grey);
-    resize: none;
-    height: 100px;
-    font-size: 1.1rem;
-  }
+    .questions__insert,
+    .questions__insert-textarea {
+      border: none;
+      background-color: transparent;
+    }
+    .questions__insert,
+    .questions__insert-textarea:focus {
+      outline: none;
+    }
+    .questions__insert {
+      color: var(--dark-grey);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .questions__insert-textarea {
+      border-bottom: 1px solid var(--dark-grey);
+      color: var(--dark-grey);
+      resize: none;
+      height: 100px;
+      font-size: 1.1rem;
+    }
 
-  .questions__images {
-    display: flex;
-    align-items: center;
-    grid-gap: 10px;
-  }
-  .questions__images-item > img {
-    vertical-align: middle;
-  }
+    .questions__images {
+      overflow-x: scroll;
+      width: 96vw;
+      display: flex;
+      align-items: center;
+      grid-gap: 10px;
+    }
+    .questions__images-item > img {
+      vertical-align: middle;
+    }
+    .questions__images-item > button {
+      border: 2px dashed var(--white);
+      background: var(--icon-primary);
+      color: var(--bg-primary);
+      width: 65px;
+      height: 40px;
+      font-size: 1.2rem;
+      padding: 0;
+    }
+    .questions__images-item {
+      margin: auto;
+    }
 
-  /*Menù lateral*/
-  .navbar__bars {
-    cursor: pointer;
-    color: var(--icon-primary);
-    margin-left: auto;
-    margin-right: 1rem;
-    z-index: 6;
-  }
-  .navbar__bars label {
-    transform: rotate(0deg);
-    transition: var(--transition-speed);
-  }
-  .navbar__menu-nav {
-    list-style: none;
-    /*pointer-events: none;*/
-  }
-  .navbar__nav--item {
-    /*opacity: 0;*/
-  }
-  .navbar__nav--item a {
-    color: var(--bg-primary);
-    text-decoration: none;
-  }
-  #menu-active:checked ~ .navbar__bars label {
-    color: var(--bg-primary);
-    transform: rotate(180deg);
-  }
-  .navbar-container {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.5);
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    transition: all 500ms ease;
-    opacity: 0;
-    visibility: hidden;
-    z-index: 5;
-  }
-  #menu-active:checked ~ .navbar-container {
-    opacity: 1;
-    visibility: visible;
-  }
-  .navbar__menu {
-    width: 100vw;
-    max-width: 250px;
-    background: #1c1c1c;
-    height: 100vh;
-    position: relative;
-    right: calc(250px - 100vw);
-    /*transition: all 500ms ease;*/
-    /*transform: translateX(-100vw);*/
-    display: none;
-  }
-  #menu-active:checked ~ .navbar-container .navbar__menu {
-    /*transform: translateX(0%);*/
-    display: block;
-    animation: fadeInRight; /* referring directly to the animation's @keyframe declaration */
-    animation-duration: 500ms;
-  }
-  .navbar__menu .navbar__menu-nav {
-    transform: translateY(15%);
-  }
-  .navbar__menu .navbar__menu-nav .navbar__nav--item a {
-    display: block;
-    text-decoration: none;
-    padding: 20px;
-    color: var(--bg-primary);
-    border-left: 5px solid transparent;
-    transition: all 400ms ease;
-  }
-  .navbar__menu .navbar__menu-nav .navbar__nav--item a:hover {
-    border-left: 5px solid var(--bg-primary);
-    background: #1f1f1f;
-  }
-  .navbar__menu label {
-    position: absolute;
-    right: 5px;
-    top: 10px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 18px;
-  }
-  /*Fin de Menù lateral*/
-</style>
+    /*Menù lateral*/
+    .navbar__bars {
+      cursor: pointer;
+      color: var(--icon-primary);
+      margin-left: auto;
+      margin-right: 1rem;
+      z-index: 6;
+    }
+    .navbar__bars label {
+      transform: rotate(0deg);
+      transition: var(--transition-speed);
+    }
+    .navbar__menu-nav {
+      list-style: none;
+      /*pointer-events: none;*/
+    }
+    .navbar__nav--item {
+      /*opacity: 0;*/
+    }
+    .navbar__nav--item a {
+      color: var(--bg-primary);
+      text-decoration: none;
+    }
+    #menu-active:checked ~ .navbar__bars label {
+      color: var(--bg-primary);
+      transform: rotate(180deg);
+    }
+    .navbar-container {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      transition: all 500ms ease;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 5;
+    }
+    #menu-active:checked ~ .navbar-container {
+      opacity: 1;
+      visibility: visible;
+    }
+    .navbar__menu {
+      width: 100vw;
+      max-width: 250px;
+      background: #1c1c1c;
+      height: 100vh;
+      position: relative;
+      right: calc(250px - 100vw);
+      /*transition: all 500ms ease;*/
+      /*transform: translateX(-100vw);*/
+      display: none;
+    }
+    #menu-active:checked ~ .navbar-container .navbar__menu {
+      /*transform: translateX(0%);*/
+      display: block;
+      animation: fadeInRight; /* referring directly to the animation's @keyframe declaration */
+      animation-duration: 500ms;
+    }
+    .navbar__menu .navbar__menu-nav {
+      transform: translateY(15%);
+    }
+    .navbar__menu .navbar__menu-nav .navbar__nav--item a {
+      display: block;
+      text-decoration: none;
+      padding: 20px;
+      color: var(--bg-primary);
+      border-left: 5px solid transparent;
+      transition: all 400ms ease;
+    }
+    .navbar__menu .navbar__menu-nav .navbar__nav--item a:hover {
+      border-left: 5px solid var(--bg-primary);
+      background: #1f1f1f;
+    }
+    .navbar__menu label {
+      position: absolute;
+      right: 5px;
+      top: 10px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    /*Fin de Menù lateral*/
 
-<body>
-  <nav class="navbar">
-    <input type="checkbox" id="nav-active" />
-    <div class="navbar__search">
-      <label class="far fa-hand-point-left" for="nav-active"></label>
-      <label class="fas fa-search" for="nav-active"></label>
-    </div>
-    <div class="navbar__input">
-      <input class="input" type="text" placeholder="Buscar..." />
-    </div>
-    <div class="navbar__title">
-      <h1>Usuarios</h1>
-    </div>
+    .questions__content {
+      flex: 1 1 auto;
+      overflow-y: scroll;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+      text-align: center;
+    }
+  </style>
 
-    <!-- Nav Menu -->
-    <input type="checkbox" id="menu-active" />
-    <div class="navbar__bars">
-      <label class="fas fa-bars" for="menu-active"></label>
-    </div>
-    <div class="navbar-container">
-      <div class="navbar__menu">
-        <ul class="navbar__menu-nav">
-          <li class="navbar__nav--item">
-            <a href="#">
-              <i class="fas fa-cash-register"></i>
-              <span class="link-text">Portafolio</span>
-            </a>
-          </li>
-          <li class="navbar__nav--item">
-            <a href="#">
-              <i class="fas fa-cash-register"></i>
-              <span class="link-text">Servicios</span>
-            </a>
-          </li>
-          <li class="navbar__nav--item">
-            <a href="#">
-              <i class="fas fa-cash-register"></i>
-              <span class="link-text">Configuracion</span>
-            </a>
-          </li>
-          <li class="navbar__nav--item">
-            <a href="#">
-              <i class="fas fa-cash-register"></i>
-              <span class="link-text">Suscribirse</span>
-            </a>
-          </li>
-        </ul>
-        <!-- <label for="menu-active">✖️</label> -->
+  <body>
+    <nav class="navbar">
+      <input type="checkbox" id="nav-active" />
+      <div class="navbar__search">
+        <label class="far fa-hand-point-left" for="nav-active"></label>
+        <label class="fas fa-search" for="nav-active"></label>
       </div>
-    </div>
-  </nav>
+      <div class="navbar__input">
+        <input class="input" type="text" placeholder="Buscar..." />
+      </div>
+      <div class="navbar__title">
+        <h1>Usuarios</h1>
+      </div>
 
-  <input type="checkbox" id="modal-btn-active" />
+      <!-- Nav Menu -->
+      <input type="checkbox" id="menu-active" />
+      <div class="navbar__bars">
+        <label class="fas fa-bars" for="menu-active"></label>
+      </div>
+      <div class="navbar-container">
+        <div class="navbar__menu">
+          <ul class="navbar__menu-nav">
+            <li class="navbar__nav--item">
+              <a href="#">
+                <i class="fas fa-cash-register"></i>
+                <span class="link-text">Portafolio</span>
+              </a>
+            </li>
+            <li class="navbar__nav--item">
+              <a href="#">
+                <i class="fas fa-cash-register"></i>
+                <span class="link-text">Servicios</span>
+              </a>
+            </li>
+            <li class="navbar__nav--item">
+              <a href="#">
+                <i class="fas fa-cash-register"></i>
+                <span class="link-text">Configuracion</span>
+              </a>
+            </li>
+            <li class="navbar__nav--item">
+              <a href="#">
+                <i class="fas fa-cash-register"></i>
+                <span class="link-text">Suscribirse</span>
+              </a>
+            </li>
+          </ul>
+          <!-- <label for="menu-active">✖️</label> -->
+        </div>
+      </div>
+    </nav>
+
+    <!--<input type="checkbox" id="modal-btn-active" />
   <label class="btn_add" for="modal-btn-active">+</label>
   <section class="modal">
     <article class="modal__add">
@@ -505,43 +531,83 @@
         </li>
       </ul>
     </article>
-  </section>
+  </section>-->
 
-  <main class="questions">
-    <div class="questions__insert">
-      <textarea class="questions__insert-textarea"></textarea>
-    </div>
-    <div class="questions__images">
-      <figure class="questions__images-item">
-        <img src="https://picsum.photos/150/100" alt="img pregunta" />
-      </figure>
-      <div class="questions__images-item">
-        <button>+</button>
+    <main class="questions">
+      <div class="questions__insert">
+        <textarea class="questions__insert-textarea"></textarea>
       </div>
-    </div>
-    <div class="questions__answers">
-      <div class="questions__answers-item">
-        <input type="checkbox" name="" id="" />
-        <button>txt</button>
-        <button>img</button>
+      <div id="img-container" class="questions__images">
+        <!--<figure class="questions__images-item">
+          <img src="https://picsum.photos/150/100" alt="img pregunta" />
+        </figure>-->
+        <div id="add-img-container" class="questions__images-item">
+          <button id="add-img"><i class="fas fa-image"></i></button>
+          <input type="file" multiple id="add-new-img" name="images[]" />
+        </div>
       </div>
-      <div class="questions__answers-item">
-        <button>+</button>
+      <div class="questions__answers">
+        <div class="questions__answers-item">
+          <input type="checkbox" name="" id="" />
+          <button>txt</button>
+          <button>img</button>
+        </div>
+        <div class="questions__answers-item">
+          <button>+</button>
+        </div>
       </div>
-    </div>
-    <div class="questions__content">
-      <div class="questions__content-list">
-        <p>Pregunta 1</p>
+      <div class="questions__content">
+        <div class="questions__content-list">
+          <p>Pregunta 1</p>
+        </div>
+        <div class="questions__content-list">
+          <p>Pregunta 1</p>
+        </div>
       </div>
-      <div class="questions__content-list">
-        <p>Pregunta 1</p>
-      </div>
-    </div>
-  </main>
-</body>
+    </main>
+  </body>
 
-<script>
-  /*const body = document.querySelector('body')
+  <script>
+    const add_img = document.querySelector("#add-img")
+    const add_new_img = document.querySelector("#add-new-img")
+
+    add_img.addEventListener("click", (e) => {
+      e.stopPropagation()
+      add_new_img.click()
+    })
+    add_new_img.addEventListener("change", (e) => {
+      e.stopPropagation()
+      const files = e.target.files
+      const supportedImages = ["image/jpeg", "image/png", "image/gif"]
+      let seEncontraronElementoNoValidos = false
+      let element
+
+      for (let i = 0; i < files.length; i++) {
+        element = files[i]
+
+        if (supportedImages.indexOf(element.type) != -1) {
+          createPreview(element)
+        } else {
+          seEncontraronElementoNoValidos = true
+        }
+      }
+
+      if (seEncontraronElementoNoValidos) {
+        console.log("Se encontraron archivos no validos.")
+      } else {
+        console.log("Todos los archivos se subieron correctamente.")
+      }
+    })
+
+    function createPreview(file) {
+      const imgCodified = URL.createObjectURL(file)
+      const figure = document.createElement('figure')
+      figure.innerHTML = `<img src="${imgCodified}" alt="img pregunta" />`
+      figure.className = 'questions__images-item'
+
+      document.querySelector('#img-container').insertBefore(figure, document.querySelector('#add-img-container'))
+    }
+    /*const body = document.querySelector('body')
 const menu = document.querySelector('.navbar__menu')
 const navbarTitle = document.querySelector('.navbar__title')
 const navbarInput = document.querySelector('.navbar__input')
@@ -593,5 +659,5 @@ btnAdd.addEventListener('click', e => {
   e.stopPropagation()
   modal.classList.toggle('open')
 })*/
-</script>
+  </script>
 </html>
