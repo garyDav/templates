@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Triangulo</title>
+</head>
+<style>
+  .triangulo-redondeado,
+  .triangulo-redondeado:before,
+  .triangulo-redondeado:after {
+    position: relative;
+    display: block;
+    width: 13px;
+    height: 13px;
+    background: #000;
+    border-top-right-radius: 3px;
+  }
+  .triangulo-redondeado {
+    margin: 0;
+    transform: rotate(-60deg) skewX(-30deg) scale(1, 0.866);
+  }
+  .triangulo-redondeado:before,
+  .triangulo-redondeado:after {
+    content: "";
+    position: absolute;
+  }
+  .triangulo-redondeado:before {
+    transform: rotate(-135deg) skewX(-45deg) scale(1.414, 0.707)
+      translate(0, -50%);
+  }
+  .triangulo-redondeado:after {
+    transform: rotate(135deg) skewY(-45deg) scale(0.707, 1.414) translate(50%);
+  }
+</style>
+<body>
+  <div class="triangulo-redondeado"></div>
+</body>
+</html>
